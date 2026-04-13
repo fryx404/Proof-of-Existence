@@ -1,70 +1,14 @@
 /* =================================================
-   創造の軌跡 - Works Page Styles
-   テーマ: 創造された作品の庭園
+   3DCG Works - ギャラリー & イマーシブモーダル
    ================================================= */
-
-/* 基本設定の継承 - main.cssの背景を使用 */
-
-/* ナビゲーション - main.cssから継承 */
 
 /* Works専用コンテナ */
 .creation-container {
     position: relative;
     z-index: 100;
     min-height: 100vh;
-    padding: var(--infinite-space) var(--presence-space);
+    padding: var(--infinite-space) var(--presence-space) calc(var(--presence-space) * 2);
     pointer-events: auto;
-}
-
-/* 帰還ナビゲーション */
-.return-nav {
-    position: fixed;
-    top: var(--presence-space);
-    left: var(--presence-space);
-    z-index: 999;
-}
-
-.return-link {
-    display: block;
-    text-decoration: none;
-    color: var(--existence);
-}
-
-.return-essence {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--breath-space) var(--presence-space);
-    background: var(--whisper);
-    border: 1px solid var(--breath);
-    border-radius: 30px;
-    backdrop-filter: blur(10px);
-    transition: all var(--moment) ease;
-}
-
-.return-essence:hover {
-    background: var(--breath);
-    border-color: var(--essence);
-    transform: translateX(-5px);
-}
-
-.return-essence .essence-ring {
-    width: 20px;
-    height: 20px;
-    border: 1px solid var(--breath);
-    border-radius: 50%;
-    animation: returnEssenceRing var(--breath-cycle) ease-in-out infinite;
-}
-
-@keyframes returnEssenceRing {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.8; }
-}
-
-.return-text {
-    font-size: 0.9rem;
-    font-weight: var(--breath-weight);
 }
 
 /* ヘッダー */
@@ -91,11 +35,6 @@
     opacity: 0.6;
 }
 
-.title-manifestation {
-    opacity: 1;
-    text-shadow: 0 0 20px var(--pulse);
-}
-
 .page-philosophy {
     font-family: 'Noto Serif JP', serif;
     font-size: clamp(0.9rem, 2vw, 1.1rem);
@@ -104,124 +43,6 @@
     font-style: italic;
     max-width: 600px;
     margin: 0 auto;
-}
-
-/* ヘッダーのランダム作品ボタン */
-.header-random-work {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin: 32px auto;
-    padding: 16px 24px;
-    background: var(--whisper);
-    border: 2px solid var(--essence);
-    border-radius: 25px;
-    color: var(--existence);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    width: auto;
-    height: auto;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    font-size: 1rem;
-    writing-mode: horizontal-tb;
-    text-orientation: mixed;
-    position: relative;
-    overflow: visible;
-    font-weight: 300;
-}
-
-.header-random-work::before {
-    content: '';
-    position: absolute;
-    top: -4px;
-    left: -4px;
-    right: -4px;
-    bottom: -4px;
-    border: 1px solid var(--breath);
-    border-radius: 30px;
-    background: transparent;
-    z-index: -1;
-    transition: all 0.3s ease;
-}
-
-.header-random-work:hover {
-    background: var(--breath);
-    border-color: var(--transcendence);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
-}
-
-.header-random-work:hover::before {
-    border-color: var(--essence);
-    top: -6px;
-    left: -6px;
-    right: -6px;
-    bottom: -6px;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-}
-
-.header-random-work:active {
-    transform: translateY(0);
-    box-shadow: none;
-}
-
-.header-random-work .btn-icon {
-    font-size: 1.1rem;
-    font-weight: 300;
-    transition: transform 0.3s ease;
-    line-height: 1;
-    writing-mode: horizontal-tb;
-    background: var(--liminal);
-    width: auto;
-    height: auto;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    border: 1px solid var(--breath);
-    color: var(--essence);
-    padding: 6px 8px;
-    min-width: 28px;
-    min-height: 28px;
-}
-
-.header-random-work:hover .btn-icon {
-    transform: rotate(180deg);
-    background: var(--breath);
-    border-color: var(--essence);
-    color: var(--existence);
-}
-
-.header-random-work:hover .btn-icon-left {
-    transform: rotate(180deg);
-}
-
-.header-random-work:hover .btn-icon-right {
-    transform: rotate(-180deg);
-}
-
-.header-random-work .btn-text {
-    font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    font-size: 0.9rem;
-    writing-mode: horizontal-tb;
-    text-orientation: mixed;
-    white-space: nowrap;
-    padding: 8px 16px;
-    color: var(--existence);
-    opacity: 0.7;
-    border: 1px solid var(--breath);
-    border-radius: 20px;
-    background: var(--liminal);
-    transition: all 0.3s ease;
-}
-
-.header-random-work:hover .btn-text {
-    border-color: var(--essence);
-    background: var(--whisper);
-    opacity: 1;
 }
 
 /* 創造統計 */
@@ -249,6 +70,8 @@
     font-size: 0.9rem;
     opacity: 0.7;
     font-weight: var(--breath-weight);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
 }
 
 /* 作品宇宙 */
@@ -263,7 +86,7 @@
 .works-universe {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--presence-space);
+    gap: 4px;
     margin-bottom: 0;
 }
 
@@ -312,7 +135,7 @@
 .work-image {
     position: relative;
     width: 100%;
-    height: 300px;
+    aspect-ratio: 16 / 10;
     overflow: hidden;
 }
 
@@ -356,18 +179,13 @@
     backdrop-filter: blur(10px);
 }
 
-/* 作品コンテンツ */
+/* 作品コンテンツ (非表示) */
 .work-content {
-    padding: var(--presence-space);
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+    display: none;
 }
 
 .work-header {
-    margin-bottom: var(--breath-space);
-    text-align: center;
+    display: none;
 }
 
 .work-title {
@@ -388,42 +206,8 @@
     display: none;
 }
 
-.work-technologies {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--whisper-space);
-    margin-bottom: var(--breath-space);
-    justify-content: center;
-}
-
-.tech-essence {
-    padding: var(--minimal-space) var(--whisper-space);
-    background: var(--liminal);
-    border: 1px solid var(--breath);
-    border-radius: 12px;
-    font-size: 0.7rem;
-    font-weight: var(--breath-weight);
-    opacity: 0.8;
-    transition: all var(--moment) ease;
-}
-
-.work-constellation:hover .tech-essence {
-    background: var(--whisper);
-    border-color: var(--essence);
-    opacity: 1;
-}
-
 .work-meta {
     display: none;
-}
-
-.work-duration {
-    font-weight: var(--breath-weight);
-}
-
-.work-philosophy {
-    font-style: italic;
-    font-family: 'Noto Serif JP', serif;
 }
 
 /* 空の状態 */
@@ -461,130 +245,6 @@
     font-size: 1rem;
     line-height: 1.6;
     opacity: 0.7;
-}
-
-/* 無限ローダー */
-.infinity-loader {
-    text-align: center;
-    padding: var(--presence-space);
-    opacity: 0;
-    transition: all var(--moment) ease;
-}
-
-.infinity-loader.show {
-    opacity: 1;
-}
-
-.loader-essence {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--breath-space);
-}
-
-.essence-particle {
-    width: 8px;
-    height: 8px;
-    background: var(--essence);
-    border-radius: 50%;
-    animation: particleFloat 2s ease-in-out infinite;
-}
-
-.essence-particle:nth-child(1) { animation-delay: 0s; }
-.essence-particle:nth-child(2) { animation-delay: 0.3s; }
-.essence-particle:nth-child(3) { animation-delay: 0.6s; }
-
-@keyframes particleFloat {
-    0%, 100% { transform: translateY(0); opacity: 0.3; }
-    50% { transform: translateY(-10px); opacity: 1; }
-}
-
-.loader-text {
-    font-size: 0.9rem;
-    opacity: 0.7;
-    font-weight: var(--breath-weight);
-}
-
-/* 作品モーダル */
-.work-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
-    z-index: 2000;
-    opacity: 0;
-    visibility: hidden;
-    transition: all var(--moment) ease;
-}
-
-.work-modal.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.modal-cosmos {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    max-width: 800px;
-    max-height: 90vh;
-    overflow-y: auto;
-}
-
-.modal-vessel {
-    position: relative;
-    background: var(--whisper);
-    border: 1px solid var(--breath);
-    border-radius: 4px;
-    padding: var(--infinite-space);
-    backdrop-filter: blur(20px);
-}
-
-.modal-dismiss {
-    position: absolute;
-    top: var(--breath-space);
-    right: var(--breath-space);
-    width: 40px;
-    height: 40px;
-    background: none;
-    border: 1px solid var(--breath);
-    border-radius: 50%;
-    color: var(--existence);
-    cursor: pointer;
-    transition: all var(--moment) ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.modal-dismiss:hover {
-    background: var(--breath);
-    border-color: var(--essence);
-    transform: scale(1.1);
-}
-
-.dismiss-ring {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 1px solid var(--breath);
-    border-radius: 50%;
-    animation: dismissRing var(--breath-cycle) ease-in-out infinite;
-}
-
-@keyframes dismissRing {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 0.8; transform: scale(1.1); }
-}
-
-.dismiss-symbol {
-    font-size: 1.2rem;
-    z-index: 1;
 }
 
 /* 浮遊アクション */
@@ -626,35 +286,14 @@
     font-weight: var(--manifestation-weight);
 }
 
-/* 時空座標 */
-.spacetime-coordinates {
-    position: fixed;
-    bottom: var(--presence-space);
-    left: var(--presence-space);
-    z-index: 999;
-    text-align: left;
-}
 
-.current-time {
-    font-family: 'Noto Sans JP', monospace;
-    font-size: 1.2rem;
-    font-weight: var(--breath-weight);
-    margin-bottom: var(--whisper-space);
-    opacity: 0.6;
-}
-
-.coordinates-philosophy {
-    font-size: 0.8rem;
-    opacity: 0.4;
-    font-style: italic;
-    font-weight: var(--breath-weight);
-}
-
-/* レスポンシブデザイン */
+/* ============================================
+   レスポンシブデザイン
+   ============================================ */
 @media (max-width: 1024px) {
     .works-universe {
         grid-template-columns: repeat(2, 1fr);
-        gap: var(--presence-space);
+        gap: 4px;
     }
 }
 
@@ -668,8 +307,8 @@
     }
     
     .works-universe {
-        grid-template-columns: 1fr;
-        gap: var(--presence-space);
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2px;
     }
     
     .creation-stats {
@@ -681,11 +320,6 @@
         bottom: var(--breath-space);
         right: var(--breath-space);
     }
-    
-    .spacetime-coordinates {
-        bottom: var(--breath-space);
-        left: var(--breath-space);
-    }
 }
 
 @media (max-width: 480px) {
@@ -696,180 +330,4 @@
     .work-image {
         height: 250px;
     }
-    
-    .work-technologies {
-        gap: var(--minimal-space);
-    }
-    
-    .tech-essence {
-        font-size: 0.6rem;
-        padding: 2px var(--whisper-space);
-    }
-    
-    .modal-vessel {
-        padding: var(--presence-space);
-    }
 }
-
-/* モーダル詳細スタイル */
-.modal-work-content {
-    max-width: 100%;
-    text-align: center;
-}
-
-.modal-image {
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: var(--presence-space);
-    text-align: center;
-}
-
-.modal-image img {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    object-fit: contain;
-    border-radius: 4px;
-    box-shadow: 0 4px 20px var(--pulse);
-}
-
-.modal-header {
-    margin-bottom: var(--presence-space);
-    text-align: center;
-}
-
-.modal-work-title {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 1.5rem;
-    font-weight: var(--manifestation-weight);
-    margin-bottom: var(--breath-space);
-    color: var(--essence);
-}
-
-.modal-work-meta {
-    display: flex;
-    flex-direction: column;
-    gap: var(--breath-space);
-    font-size: 0.9rem;
-    opacity: 0.7;
-    align-items: center;
-}
-
-.modal-work-meta-top {
-    display: flex;
-    gap: var(--breath-space);
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.modal-work-meta-bottom {
-    display: flex;
-    justify-content: center;
-}
-
-.modal-type,
-.modal-duration,
-.modal-status,
-.modal-technologies {
-    padding: var(--minimal-space) var(--whisper-space);
-    background: var(--liminal);
-    border: 1px solid var(--breath);
-    border-radius: 12px;
-}
-
-.modal-description {
-    margin-bottom: var(--presence-space);
-    border-bottom: 1px solid var(--breath);
-    padding-bottom: var(--breath-space);
-    font-size: 1.1rem;
-    line-height: 1.7;
-    opacity: 0.7;
-    text-align: center;
-}
-
-.modal-section {
-    margin-bottom: var(--presence-space);
-    text-align: center;
-}
-
-.modal-section h3 {
-    font-size: 1rem;
-    font-weight: var(--manifestation-weight);
-    margin-bottom: var(--breath-space);
-    color: var(--essence);
-}
-
-.modal-features {
-    list-style: none;
-    padding: 0;
-}
-
-.modal-features li {
-    padding: var(--whisper-space) 0;
-    border-bottom: 1px solid var(--breath);
-    opacity: 0.8;
-}
-
-.modal-features li:last-child {
-    border-bottom: none;
-}
-
-.modal-philosophy {
-    margin-top: var(--presence-space);
-    padding-top: var(--presence-space);
-    border-top: 1px solid var(--breath);
-}
-
-.modal-philosophy blockquote {
-    font-family: 'Noto Serif JP', serif;
-    font-style: italic;
-    font-size: 1.1rem;
-    line-height: 1.8;
-    opacity: 0.8;
-    border-left: 3px solid var(--essence);
-    padding-left: var(--breath-space);
-    margin: 0;
-}
-
-/* 外部リンクボタン */
-.modal-external-link {
-    display: inline-block;
-    text-decoration: none;
-    color: var(--existence);
-    margin-top: var(--breath-space);
-    transition: all var(--moment) ease;
-}
-
-.external-link-content {
-    display: flex;
-    align-items: center;
-    gap: var(--whisper-space);
-    padding: var(--breath-space) var(--presence-space);
-    background: var(--whisper);
-    border: 1px solid var(--breath);
-    border-radius: 25px;
-    backdrop-filter: blur(10px);
-    transition: all var(--moment) ease;
-}
-
-.modal-external-link:hover .external-link-content {
-    background: var(--breath);
-    border-color: var(--essence);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px var(--pulse);
-}
-
-.link-icon {
-    font-size: 1.2rem;
-    font-weight: bold;
-    transition: transform var(--moment) ease;
-}
-
-.modal-external-link:hover .link-icon {
-    transform: translate(2px, -2px);
-}
-
-.link-text {
-    font-size: 0.9rem;
-    font-weight: var(--breath-weight);
-} 

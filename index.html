@@ -1,93 +1,79 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Furuya Takumi Portfolio</title>
+    <title>CG Art Works - Furuya Takumi</title>
+    <meta name="description" content="Furuya Takumi (FRYX) の3DCG作品集。Blender、Maya等で制作されたデジタルアートのアーカイヴ。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;200;300;400;500;600;700;800;900&family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;200;300;400;500;600;700;800;900&family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/works.css">
 </head>
+
 <body>
     <!-- 呼吸する背景 -->
     <div class="breathing-void"></div>
-    
+
     <!-- 生成される粒子 -->
     <canvas id="existence-canvas"></canvas>
-    
-    <!-- メイン構造 -->
-    <div class="existence-container">
-        <!-- ナビゲーション - 無から有へ -->
-        <nav class="ethereal-nav">
-            <div class="nav-essence">
-                <a href="index.html" class="nav-dot active" title="存在の証明">
-                    <span class="nav-label">存在</span>
-                </a>
-                <a href="works.html" class="nav-dot" title="作品の軌跡">
-                    <span class="nav-label">作品</span>
-                </a>
-                <a href="about.html" class="nav-dot" title="作者の詳細">
-                    <span class="nav-label">詳細</span>
-                </a>
-            </div>
-        </nav>
 
-        <!-- メインセクション: 存在の証明 -->
-        <section id="existence-proof" class="existence-section active">
-            <div class="existence-content">
-                <div class="existence-title">
-                    <h1 class="void-text">
-                        <span class="char-morph">存</span>
-                        <span class="char-morph">在</span>
-                        <span class="char-morph">の</span>
-                        <span class="char-morph">証</span>
-                        <span class="char-morph">明</span>
-                    </h1>
-                <!-- 哲学的メッセージ -->
-                <div class="existence-philosophy">
-                    <p class="philosophy-text">
-                        創造された作品は、作者の魂の断片である。<br>
-                        このポートフォリオは、私の存在の証明である。
+    <!-- メイン構造 -->
+    <div class="creation-container">
+        <!-- メインサイトへの戻りリンク -->
+        <a href="https://fryx404.github.io/" class="back-to-main" id="back-to-main">
+            <span class="back-arrow">←</span>
+            <span class="back-text">Main Site</span>
+        </a>
+
+        <!-- ヘッダー -->
+        <header class="creation-header">
+            <div class="header-content">
+                <h1 class="page-title">
+                    <span class="title-void">CG Art Works</span>
+                </h1>
+                <p class="page-philosophy">
+                    創造された作品は、作者の魂の断片である。<br>
+                    このアーカイヴは、私の存在の証明である。
+                </p>
+
+            </div>
+        </header>
+
+        <!-- 作品グリッド -->
+        <main class="works-main">
+            <div class="works-universe" id="works-universe">
+                <!-- 作品は動的に生成 -->
+            </div>
+
+            <!-- 空の状態 -->
+            <div class="void-state" id="void-state">
+                <div class="void-content">
+                    <div class="void-symbol">∅</div>
+                    <h3 class="void-title">無の境地</h3>
+                    <p class="void-description">
+                        フィルター条件に該当する創造物は存在しません。<br>
+                        別の視点から宇宙を眺めてみてください。
                     </p>
                 </div>
-                
-                <!-- 存在の選択 -->
-                <div class="existence-choices">
-                    <a href="works.html" class="existence-portal" id="creation-portal">
-                        <div class="portal-essence">
-                            <div class="portal-ring"></div>
-                            <div class="portal-ring"></div>
-                            <div class="portal-ring"></div>
-                            <div class="portal-core">
-                                <span class="portal-text">作品</span>
-                                <span class="portal-subtitle">作品との出会い</span>
-                            </div>
-                        </div>
-                    </a>
-                    
-                    <a href="about.html" class="existence-portal" id="about-portal">
-                        <div class="portal-essence">
-                            <div class="portal-ring"></div>
-                            <div class="portal-ring"></div>
-                            <div class="portal-ring"></div>
-                            <div class="portal-core">
-                                <span class="portal-text">詳細</span>
-                                <span class="portal-subtitle">作者の詳細</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
             </div>
-        </section>
+        </main>
     </div>
 
-    <!-- 時空の座標 -->
-    <div class="time-existence">
-        <div class="current-time" id="current-time"></div>
-        <div class="time-philosophy">この瞬間は二度と来ない</div>
+    <!-- 浮遊するアクションボタン -->
+    <div class="floating-actions">
+        <button class="action-btn" id="scroll-to-top" title="頂点への回帰">
+            <div class="btn-essence">↑</div>
+        </button>
     </div>
 
     <script src="scripts/main.js"></script>
+    <script src="scripts/works-data.js"></script>
+    <script src="scripts/gallery.js"></script>
 </body>
-</html> 
+
+</html>

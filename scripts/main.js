@@ -1,6 +1,6 @@
 /**
- * 存在の証明 - Main Page JavaScript
- * テーマ: 無から有へ、有から無へ
+ * 存在の証明 - Main JavaScript
+ * パーティクルシステムと時計
  */
 
 class ExistenceState {
@@ -17,8 +17,6 @@ class ExistenceState {
         setTimeout(() => {
             this.initializeParticleSystem();
             this.updateTime();
-            this.startExistenceCycle();
-            this.setupPortalAnimations();
         }, 100);
     }
 
@@ -42,35 +40,6 @@ class ExistenceState {
         this.canvas.height = window.innerHeight;
     }
 
-    setupPortalAnimations() {
-        const portals = document.querySelectorAll('.existence-portal');
-        
-        portals.forEach(portal => {
-            portal.addEventListener('mouseenter', () => {
-                this.animatePortalEntry(portal);
-            });
-            
-            portal.addEventListener('mouseleave', () => {
-                this.animatePortalExit(portal);
-            });
-        });
-    }
-
-    animatePortalEntry(portal) {
-        const rings = portal.querySelectorAll('.portal-ring');
-        rings.forEach((ring, index) => {
-            ring.style.animationDuration = '1s';
-            ring.style.animationDelay = `${index * 0.2}s`;
-        });
-    }
-
-    animatePortalExit(portal) {
-        const rings = portal.querySelectorAll('.portal-ring');
-        rings.forEach(ring => {
-            ring.style.animationDuration = '4s';
-        });
-    }
-
     updateTime() {
         const timeElement = document.getElementById('current-time');
         if (!timeElement) return;
@@ -87,31 +56,6 @@ class ExistenceState {
 
         updateClock();
         setInterval(updateClock, 1000);
-    }
-
-    startExistenceCycle() {
-        // 文字モーフィングアニメーション
-        this.animateCharacterMorphing();
-        
-        // 呼吸テキストアニメーション
-        this.animateBreathingText();
-    }
-
-    animateCharacterMorphing() {
-        const chars = document.querySelectorAll('.char-morph');
-        
-        chars.forEach((char, index) => {
-            char.style.setProperty('--i', index);
-            char.style.animationDelay = `${index * 0.3}s`;
-        });
-    }
-
-    animateBreathingText() {
-        const breathingTexts = document.querySelectorAll('.breathing-text');
-        
-        breathingTexts.forEach((text, index) => {
-            text.style.animationDelay = `${index * 1.2}s`;
-        });
     }
 }
 
@@ -199,5 +143,3 @@ class Particle {
 document.addEventListener('DOMContentLoaded', () => {
     new ExistenceState();
 });
-
- 

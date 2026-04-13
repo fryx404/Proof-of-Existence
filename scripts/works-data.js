@@ -1,10 +1,10 @@
 /**
- * 創造の軌跡 - Works Page JavaScript
- * テーマ: 創造された作品の庭園
+ * 3DCG Works - Gallery & Immersive Modal
+ * 作品データとギャラリー管理
  */
 
 // 作品データ - 存在の証明
-const WORKS_DATA = [
+window.WORKS_DATA = [
 
     {
         id: "cg-20250430",
@@ -318,7 +318,7 @@ const WORKS_DATA = [
         image: "images/works/250407.png",
         url: "https://www.artstation.com/artwork/dyP1KX"
     },
-    
+
     {
         id: "cg-20250406",
         title: "バベルの炉",
@@ -463,7 +463,7 @@ const WORKS_DATA = [
         image: "images/works/静寂の侵食.png",
         url: "https://www.artstation.com/artwork/WXzqvD"
     },
-    
+
     {
         id: "cg-20250321",
         title: "夜の街の光",
@@ -520,9 +520,9 @@ const WORKS_DATA = [
         id: "Astar-blooms-in-the-deep-sea",
         title: "深海の星",
         description: "深海に咲く、青い星の花。<br>それは、生命の誕生を祝う光。",
-        technologies: [ "Blender",  "AfterEffects"],
+        technologies: ["Blender", "AfterEffects"],
         duration: "3日",
-        type:  "3DCG",
+        type: "3DCG",
         status: "完成",
         year: 2024,
         image: "images/works/深海の星.jpg",
@@ -530,26 +530,12 @@ const WORKS_DATA = [
     },
 
     {
-        id: "NFT-2024",
-        title: "Snowfall in Tokyo",
-        description: "日本が世界に誇る大都市東京<br>数十年に一度と言われる大雪が降った一日を記録。",
-        technologies: [ "Photoshop", "Lightroom"],
-        duration: "60日",
-        type:  "NFT",
-        status: "完成",
-        year: 2024,
-        image: "images/works/2024-NFT.png",
-        url: "https://www.behance.net/gallery/213444611/Snowfall-in-Tokyo"
-    },
-
-
-    {
         id: "EphemeralBubblesOfStardust",
         title: "星影の泡影",
         description: "果てしない宇宙に浮かぶ、星々の記憶。<br>触れれば消えそうな、儚い光の粒。",
-        technologies: [ "Maya", "AfterEffects"],
+        technologies: ["Maya", "AfterEffects"],
         duration: "2日",
-        type:  "3DCG",
+        type: "3DCG",
         status: "完成",
         year: 2022,
         image: "images/works/星影の泡影.jpg",
@@ -560,9 +546,9 @@ const WORKS_DATA = [
         id: "TheVeinsOfTheNetworkC",
         title: "情報回廊C",
         description: "0と1だけでは表せないものがこの世には存在する。<br>私たちはこの回廊を通り、どこへ向かうのか。",
-        technologies: [ "Cinema4D", "AfterEffects"],
+        technologies: ["Cinema4D", "AfterEffects"],
         duration: "3日",
-        type:  "3DCG",
+        type: "3DCG",
         status: "完成",
         year: 2022,
         image: "images/works/情報回廊C.png",
@@ -573,9 +559,9 @@ const WORKS_DATA = [
         id: "TheVeinsOfTheNetworkB",
         title: "情報回廊B",
         description: "0と1だけでは表せないものがこの世には存在する。<br>私たちはこの回廊を通り、どこへ向かうのか。",
-        technologies: [ "Cinema4D", "AfterEffects"],
+        technologies: ["Cinema4D", "AfterEffects"],
         duration: "3日",
-        type:  "3DCG",
+        type: "3DCG",
         status: "完成",
         year: 2022,
         image: "images/works/情報回廊B.png",
@@ -586,9 +572,9 @@ const WORKS_DATA = [
         id: "TheVeinsOfTheNetworkA",
         title: "情報回廊A",
         description: "0と1だけでは表せないものがこの世には存在する。<br>私たちはこの回廊を通り、どこへ向かうのか。",
-        technologies: [ "Cinema4D", "AfterEffects"],
+        technologies: ["Cinema4D", "AfterEffects"],
         duration: "3日",
-        type:  "3DCG",
+        type: "3DCG",
         status: "完成",
         year: 2022,
         image: "images/works/情報回廊A.png",
@@ -598,366 +584,3 @@ const WORKS_DATA = [
 
 ];
 
-class CreationGarden {
-    constructor() {
-        this.works = WORKS_DATA;
-        
-        // イベントハンドラーの初期化
-        this.currentCloseHandler = null;
-        this.currentCosmosHandler = null;
-        this.currentEscHandler = null;
-        this.currentModalHandler = null;
-        
-        this.initializeGarden();
-    }
-
-    initializeGarden() {
-        // 初期化時にモーダルを確実に閉じる
-        const modal = document.getElementById('work-modal');
-        if (modal) {
-            modal.classList.remove('active');
-        }
-        
-        setTimeout(() => {
-            this.initializeParticleSystem();
-            this.setupActions();
-            this.updateStats();
-            this.renderWorks();
-            this.updateTime();
-            this.animateEntry();
-        }, 100);
-    }
-
-    initializeParticleSystem() {
-        const canvas = document.getElementById('existence-canvas');
-        if (!canvas) return;
-
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-        
-        // シンプルなパーティクルシステム
-        const particles = [];
-        const maxParticles = 30;
-
-        for (let i = 0; i < maxParticles; i++) {
-            particles.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                vx: (Math.random() - 0.5) * 0.5,
-                vy: (Math.random() - 0.5) * 0.5,
-                life: Math.random(),
-                decay: Math.random() * 0.01 + 0.005,
-                size: Math.random() * 2 + 1
-            });
-        }
-
-        const animate = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            particles.forEach(particle => {
-                particle.x += particle.vx;
-                particle.y += particle.vy;
-                particle.life -= particle.decay;
-
-                if (particle.life <= 0 || 
-                    particle.x < 0 || particle.x > canvas.width ||
-                    particle.y < 0 || particle.y > canvas.height) {
-                    particle.x = Math.random() * canvas.width;
-                    particle.y = Math.random() * canvas.height;
-                    particle.vx = (Math.random() - 0.5) * 0.5;
-                    particle.vy = (Math.random() - 0.5) * 0.5;
-                    particle.life = 1;
-                }
-
-                ctx.save();
-                ctx.globalAlpha = particle.life * 0.3;
-                ctx.fillStyle = '#ffffff';
-                ctx.beginPath();
-                ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.restore();
-            });
-
-            requestAnimationFrame(animate);
-        };
-
-        animate();
-    }
-
-
-
-    setupActions() {
-        // スクロールトップボタン
-        const scrollTopBtn = document.getElementById('scroll-to-top');
-        if (scrollTopBtn) {
-            scrollTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
-            // スクロール位置に応じて表示/非表示
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 300) {
-                    scrollTopBtn.style.opacity = '1';
-                    scrollTopBtn.style.visibility = 'visible';
-                } else {
-                    scrollTopBtn.style.opacity = '0';
-                    scrollTopBtn.style.visibility = 'hidden';
-                }
-            });
-        }
-
-        // ランダム作品ボタン（右下）
-        const randomBtn = document.getElementById('random-work');
-        if (randomBtn) {
-            randomBtn.addEventListener('click', () => {
-                this.showRandomWork();
-            });
-        }
-
-        // ランダム作品ボタン（ヘッダー）
-        const headerRandomBtn = document.getElementById('header-random-work');
-        if (headerRandomBtn) {
-            headerRandomBtn.addEventListener('click', () => {
-                this.showRandomWork();
-            });
-        }
-    }
-
-
-
-    renderWorks() {
-        const universe = document.getElementById('works-universe');
-        
-        if (!universe) return;
-
-        universe.innerHTML = '';
-
-        // 年度順（新しい順）でソート
-        const sortedWorks = [...this.works].sort((a, b) => b.year - a.year);
-
-        sortedWorks.forEach((work, index) => {
-            const workElement = this.createWorkElement(work, index);
-            universe.appendChild(workElement);
-        });
-
-        // アニメーション
-        this.animateWorks();
-    }
-
-    createWorkElement(work, index) {
-        const element = document.createElement('div');
-        element.className = 'work-constellation';
-        element.setAttribute('data-work-id', work.id);
-        element.style.setProperty('--i', index);
-
-        element.innerHTML = `
-            ${work.image ? `
-                <div class="work-image">
-                    <img src="${work.image}" alt="${work.title}" loading="lazy">
-                    <div class="image-overlay">
-                        <span class="view-details">詳細を見る</span>
-                    </div>
-                </div>
-            ` : ''}
-            
-            <div class="work-content">
-                <div class="work-header">
-                    <h3 class="work-title">${work.title}</h3>
-                    <div class="work-type">${work.type}</div>
-                </div>
-                
-                <p class="work-description">${work.description}</p>
-                
-                <div class="work-meta">
-                    <span class="work-duration">${work.duration}</span>
-                    <span class="work-status">${work.status}</span>
-                </div>
-            </div>
-        `;
-
-        element.addEventListener('click', () => {
-            this.openWorkModal(work);
-        });
-
-        return element;
-    }
-
-    animateWorks() {
-        const works = document.querySelectorAll('.work-constellation');
-        works.forEach((work, index) => {
-            work.style.opacity = '0';
-            work.style.transform = 'translateY(30px)';
-            
-            setTimeout(() => {
-                work.style.transition = 'all 0.6s ease';
-                work.style.opacity = '1';
-                work.style.transform = 'translateY(0)';
-            }, index * 100);
-        });
-    }
-
-    openWorkModal(work) {
-        const modal = document.getElementById('work-modal');
-        const modalEssence = modal.querySelector('.modal-essence');
-        
-        if (!modal || !modalEssence) return;
-
-        modalEssence.innerHTML = `
-            <div class="modal-work-content">
-                ${work.image ? `
-                    <div class="modal-image">
-                        <img src="${work.image}" alt="${work.title}">
-                    </div>
-                ` : ''}
-                
-                <header class="modal-header">
-                    <h2 class="modal-work-title">${work.title}</h2>
-                </header>
-                
-                <div class="modal-description">
-                    <p>${work.description}</p>
-                </div>
-                
-                <div class="modal-work-meta">
-                    <div class="modal-work-meta-top">
-                        <span class="modal-type">${work.type}</span>
-                        <span class="modal-duration">制作日数：${work.duration}</span>
-                        <span class="modal-status">ステータス：${work.status}</span>
-                    </div>
-                    <div class="modal-work-meta-bottom">
-                        <span class="modal-technologies">ツール：${work.technologies.join(', ')}</span>
-                    </div>
-                </div>
-                
-                ${work.features && work.features.length > 0 && work.features[0] !== "" ? `
-                    <div class="modal-section">
-                        <h3>実現された機能</h3>
-                        <ul class="modal-features">
-                            ${work.features.map(feature => 
-                                `<li>${feature}</li>`
-                            ).join('')}
-                        </ul>
-                    </div>
-                ` : ''}
-                
-                ${work.url ? `
-                    <div class="modal-section">
-                        <a href="${work.url}" target="_blank" rel="noopener noreferrer" class="modal-external-link">
-                            <div class="external-link-content">
-                                <span class="link-icon">↗</span>
-                                <span class="link-text">作品を詳しく見る</span>
-                            </div>
-                        </a>
-                    </div>
-                ` : ''}
-            </div>
-        `;
-
-        modal.classList.add('active');
-        
-        // モーダル閉じる処理
-        this.setupModalClose(modal);
-    }
-
-    setupModalClose(modal) {
-        const closeBtn = modal.querySelector('.modal-dismiss');
-        const modalCosmos = modal.querySelector('.modal-cosmos');
-        const modalVessel = modal.querySelector('.modal-vessel');
-        
-        const closeModal = () => {
-            modal.classList.remove('active');
-            // 既存のイベントリスナーをクリーンアップ
-            document.removeEventListener('keydown', this.currentEscHandler);
-            if (this.currentModalHandler) {
-                modal.removeEventListener('click', this.currentModalHandler);
-            }
-        };
-
-        // 既存のイベントリスナーをクリーンアップ
-        if (this.currentEscHandler) {
-            document.removeEventListener('keydown', this.currentEscHandler);
-        }
-        if (this.currentModalHandler) {
-            modal.removeEventListener('click', this.currentModalHandler);
-        }
-
-        // バツボタンでクローズ
-        if (closeBtn) {
-            closeBtn.removeEventListener('click', this.currentCloseHandler);
-            this.currentCloseHandler = closeModal;
-            closeBtn.addEventListener('click', this.currentCloseHandler);
-        }
-
-        // モーダル外側クリックでクローズ（改善版）
-        this.currentModalHandler = (e) => {
-            // モーダルの背景部分（modal自体）をクリックした場合のみ閉じる
-            // modal-vesselやその子要素をクリックした場合は閉じない
-            if (e.target === modal) {
-                closeModal();
-            }
-        };
-        modal.addEventListener('click', this.currentModalHandler);
-
-        // ESCキーで閉じる
-        this.currentEscHandler = (e) => {
-            if (e.key === 'Escape') {
-                closeModal();
-            }
-        };
-        document.addEventListener('keydown', this.currentEscHandler);
-    }
-
-    showRandomWork() {
-        if (this.works.length === 0) return;
-        
-        const randomWork = this.works[
-            Math.floor(Math.random() * this.works.length)
-        ];
-        
-        this.openWorkModal(randomWork);
-    }
-
-    updateStats() {
-        const totalWorks = document.getElementById('total-works');
-
-        if (totalWorks) {
-            totalWorks.textContent = this.works.length;
-        }
-    }
-
-    updateTime() {
-        const timeElement = document.getElementById('current-time');
-        if (!timeElement) return;
-
-        const updateClock = () => {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString('ja-JP', {
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
-            });
-            timeElement.textContent = timeString;
-        };
-
-        updateClock();
-        setInterval(updateClock, 1000);
-    }
-
-    animateEntry() {
-        // ヘッダー部分のアニメーションは削除
-        // 作品カードのアニメーションのみ実行
-    }
-}
-
-// ページ読み込み完了時に初期化
-document.addEventListener('DOMContentLoaded', () => {
-    new CreationGarden();
-});
-
- 

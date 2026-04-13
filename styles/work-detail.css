@@ -1,0 +1,381 @@
+/* =================================================
+   3DCG Works - Work Detail Styles (Redesigned)
+   ================================================= */
+
+/* アンビエント背景（作品画像を背後で大きくぼかして表示） */
+.ambient-background {
+    position: fixed;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    z-index: 0;
+    pointer-events: none;
+    background-size: cover;
+    background-position: center;
+    filter: blur(100px) brightness(0.4) saturate(1.5);
+    opacity: 0;
+    transition: opacity 1s ease, background-image 1s ease;
+    mix-blend-mode: color-dodge;
+}
+
+.detail-container {
+    position: relative;
+    z-index: 100;
+    min-height: 100vh;
+    padding: calc(var(--presence-space) * 2) calc(var(--presence-space) * 3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+}
+
+/* 前後ナビゲーション */
+.detail-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1010;
+    width: 64px;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    color: var(--existence);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.detail-nav:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.nav-prev { left: 40px; }
+.nav-next { right: 40px; }
+
+.nav-arrow {
+    font-size: 2rem;
+    font-weight: var(--breath-weight);
+    line-height: 1;
+    opacity: 0.8;
+}
+
+.detail-nav:hover .nav-arrow {
+    opacity: 1;
+}
+
+/* コンテンツエリア */
+.detail-content-area {
+    width: 100%;
+    max-width: 1600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: detailContentEnter 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes detailContentEnter {
+    from {
+        opacity: 0;
+        transform: scale(0.98) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* イマーシブレイアウト (2カラム) */
+.detail-layout {
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 40px;
+    height: 100%;
+    max-height: 85vh;
+}
+
+/* 画像ラッパー (左側) */
+.detail-image-wrapper {
+    flex: 1.5;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.2); /* 読み込み中のプレースホルダー */
+}
+
+.detail-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.detail-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 20px;
+}
+
+/* 情報パネルラッパー (右側) */
+.detail-info-wrapper {
+    flex: 1;
+    min-width: 400px;
+    max-width: 500px;
+    display: flex;
+    align-items: stretch;
+}
+
+/* グラスモーフィズム情報パネル */
+.detail-info {
+    width: 100%;
+    padding: 48px;
+    background: rgba(10, 10, 12, 0.6);
+    background-image: linear-gradient(
+        135deg, 
+        rgba(255, 255, 255, 0.05) 0%, 
+        rgba(255, 255, 255, 0.01) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 20px 80px rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    display: flex;
+    flex-direction: column;
+}
+
+.info-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.info-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: var(--manifestation-weight);
+    color: var(--existence);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.info-year {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.05em;
+    font-weight: 300;
+}
+
+.info-type-badge {
+    padding: 6px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.info-description {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.05rem;
+    line-height: 2;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: auto; /* 下に押しやる */
+    padding-bottom: 40px;
+    font-weight: 300;
+}
+
+.info-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 32px;
+}
+
+.meta-tag {
+    padding: 6px 14px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.info-actions {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 24px;
+}
+
+.action-link {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--existence);
+    padding: 16px 28px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.action-link:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.action-link-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.action-link:hover .action-link-icon {
+    transform: translate(2px, -2px);
+}
+
+/* 作品カウンター (下部中央) */
+.detail-counter {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1010;
+    padding: 8px 24px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.15em;
+    font-variant-numeric: tabular-nums;
+}
+
+/* エラー画面 */
+.error-container {
+    text-align: center;
+    padding: 60px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 20px;
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.error-container h2 {
+    margin-bottom: 20px;
+    color: var(--existence);
+}
+
+.error-container p {
+    margin-bottom: 30px;
+    opacity: 0.7;
+}
+
+/* レスポンシブ - ノートPC */
+@media (max-width: 1280px) {
+    .detail-layout {
+        max-height: 80vh;
+    }
+    
+    .detail-info {
+        padding: 32px;
+    }
+    
+    .detail-info-wrapper {
+        min-width: 350px;
+    }
+}
+
+/* レスポンシブ - タブレット / モバイル縦積み */
+@media (max-width: 1024px) {
+    .detail-container {
+        padding: 100px 24px 100px;
+        align-items: flex-start;
+        height: auto;
+    }
+    
+    .detail-layout {
+        flex-direction: column;
+        height: auto;
+        max-height: none;
+        gap: 24px;
+    }
+    
+    .detail-image-wrapper {
+        max-height: 60vh;
+        width: 100%;
+        flex: none;
+    }
+    
+    .detail-info-wrapper {
+        max-width: 100%;
+        min-width: auto;
+        flex: none;
+    }
+    
+    .detail-nav {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .nav-prev { left: 16px; }
+    .nav-next { right: 16px; }
+    
+    .nav-arrow { font-size: 1.5rem; }
+}
+
+@media (max-width: 768px) {
+    .detail-container {
+        padding-top: 80px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    
+    .detail-info {
+        padding: 24px;
+    }
+    
+    .info-title {
+        font-size: 1.5rem;
+    }
+
+    .detail-counter {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+}

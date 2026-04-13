@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Detail - Furuya Takumi</title>
+    <meta name="description" content="3DCG作品の詳細">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;200;300;400;500;600;700;800;900&family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/work-detail.css">
+</head>
+<body>
+    <!-- 呼吸する背景 -->
+    <div class="breathing-void"></div>
+    
+    <!-- 生成される粒子 -->
+    <canvas id="existence-canvas"></canvas>
+    
+    <!-- ギャラリーへの戻りリンク -->
+    <a href="index.html" class="back-to-main" id="back-to-gallery">
+        <span class="back-arrow">←</span>
+        <span class="back-text">Gallery</span>
+    </a>
+
+    <!-- メイン構造 -->
+    <main class="detail-container">
+        <!-- 前後ナビゲーション -->
+        <button class="detail-nav nav-prev" id="nav-prev" aria-label="前の作品">
+            <span class="nav-arrow">‹</span>
+        </button>
+        <button class="detail-nav nav-next" id="nav-next" aria-label="次の作品">
+            <span class="nav-arrow">›</span>
+        </button>
+        
+        <!-- コンテンツエリア -->
+        <div class="detail-content-area" id="detail-content-area">
+            <!-- JSで動的生成 -->
+        </div>
+    </main>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/works-data.js"></script>
+    <script src="scripts/work-detail.js"></script>
+</body>
+</html>

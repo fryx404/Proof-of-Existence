@@ -1,5 +1,5 @@
 /* =================================================
-   存在の証明 - ポートフォリオスタイル
+   存在の証明 - ベーススタイル
    テーマ: 創造性と保存性、有と無、生と死
    ================================================= */
 
@@ -103,660 +103,46 @@ body {
     pointer-events: none;
 }
 
-/* メイン構造 */
-.existence-container {
-    position: relative;
-    z-index: 10;
-    min-height: 100vh;
-}
-
-/* エーテルナビゲーション */
-.ethereal-nav {
+/* メインサイトへの戻りリンク */
+.back-to-main {
     position: fixed;
-    right: var(--presence-space);
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1000;
-    pointer-events: auto;
-}
-
-.nav-essence {
+    top: var(--presence-space);
+    left: var(--presence-space);
+    z-index: 999;
     display: flex;
-    flex-direction: column;
-    gap: var(--breath-space);
-}
-
-.nav-dot {
-    display: block;
-    width: 60px;
-    height: 60px;
-    border: 1px solid var(--breath);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all var(--moment) ease;
-    position: relative;
+    align-items: center;
+    gap: var(--whisper-space);
     text-decoration: none;
     color: var(--existence);
-    margin-bottom: var(--breath-space);
-}
-
-.nav-dot::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 20px;
-    height: 20px;
-    background: var(--existence);
-    border-radius: 50%;
-    opacity: 0;
+    padding: var(--whisper-space) var(--breath-space);
+    background: var(--whisper);
+    border: 1px solid var(--breath);
+    border-radius: 24px;
+    backdrop-filter: blur(10px);
     transition: all var(--moment) ease;
+    font-size: 0.85rem;
+    font-weight: var(--breath-weight);
+    opacity: 0.7;
 }
 
-.nav-dot.active::before,
-.nav-dot:hover::before {
-    opacity: 0.3;
-}
-
-.nav-dot.active {
+.back-to-main:hover {
+    opacity: 1;
+    background: var(--breath);
     border-color: var(--essence);
-    box-shadow: 0 0 20px var(--whisper);
+    transform: translateX(-4px);
 }
 
-.nav-label {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 0.7rem;
-    font-weight: var(--breath-weight);
-    opacity: 0.8;
-    z-index: 1;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-}
-
-.nav-dot:hover .nav-label {
-    opacity: 1;
-}
-
-/* セクション共通スタイル */
-section {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--infinite-space) var(--presence-space);
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all var(--existence-cycle) ease;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    pointer-events: none;
-    z-index: 1;
-}
-
-section.active {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-    z-index: 10;
-}
-
-/* セクション1: 無 (Void) */
-.void-section {
-    text-align: center;
-}
-
-.existence-title {
-    margin-bottom: var(--presence-space);
-}
-
-.void-text {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(3rem, 8vw, 8rem);
-    font-weight: var(--weightless);
-    letter-spacing: 0.2em;
-    margin-bottom: var(--presence-space);
-    display: flex;
-    justify-content: center;
-    gap: var(--whisper-space);
-}
-
-.char-morph {
-    display: inline-block;
-    animation: charMorph var(--eternity) ease-in-out infinite;
-    animation-delay: calc(var(--i, 0) * 0.5s);
-    opacity: 0.7;
-    transition: all var(--moment) ease;
-}
-
-.char-morph:hover {
-    opacity: 1;
-    transform: scale(1.1);
-    text-shadow: 0 0 20px var(--pulse);
-}
-
-@keyframes charMorph {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    25% { transform: translateY(-10px) rotate(1deg); }
-    50% { transform: translateY(0) rotate(0deg); }
-    75% { transform: translateY(10px) rotate(-1deg); }
-}
-
-.void-subtitle {
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    font-weight: var(--whisper-weight);
-    line-height: 2;
-    opacity: 0.6;
-    text-align: center;
-}
-
-.breathing-text {
-    animation: breatheText var(--breath-cycle) ease-in-out infinite;
-    animation-delay: calc(var(--i, 0) * 1s);
-}
-
-.breathing-text.delay-1 { animation-delay: 1s; }
-.breathing-text.delay-2 { animation-delay: 2s; }
-
-@keyframes breatheText {
-    0%, 100% { opacity: 0.6; }
-    50% { opacity: 1; }
-}
-
-/* 存在の選択 */
-.existence-choices {
-    display: flex;
-    gap: var(--infinite-space);
-    margin-top: var(--presence-space);
-    justify-content: center;
-    align-items: center;
-}
-
-.existence-portal {
-    position: relative;
-    display: block;
-    text-decoration: none;
-    color: var(--existence);
-    cursor: pointer;
-    z-index: 100;
-}
-
-.portal-essence {
-    position: relative;
-    display: inline-block;
-}
-
-.portal-ring {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 140px;
-    height: 140px;
-    border: 1px solid var(--breath);
-    border-radius: 50%;
-    animation: portalRing var(--breath-cycle) ease-out infinite;
-    animation-delay: calc(var(--i, 0) * 1.3s);
-}
-
-.portal-ring:nth-child(1) { animation-delay: 0s; }
-.portal-ring:nth-child(2) { animation-delay: 1.3s; }
-.portal-ring:nth-child(3) { animation-delay: 2.6s; }
-
-@keyframes portalRing {
-    0% {
-        transform: translate(-50%, -50%) scale(0.3);
-        opacity: 1;
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(1.5);
-        opacity: 0;
-    }
-}
-
-.portal-core {
-    position: relative;
-    z-index: 1;
-    width: 120px;
-    height: 120px;
-    border: 1px solid var(--essence);
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: var(--whisper);
-    backdrop-filter: blur(10px);
-    transition: all var(--moment) ease;
-    text-align: center;
-}
-
-.portal-text {
-    font-size: 0.9rem;
-    font-weight: var(--manifestation-weight);
-    margin-bottom: var(--minimal-space);
-    line-height: 1.2;
-}
-
-.portal-subtitle {
-    font-size: 0.7rem;
-    opacity: 0.7;
-    font-weight: var(--breath-weight);
-}
-
-.existence-portal:hover .portal-core {
-    transform: scale(1.1);
-    box-shadow: 0 0 40px var(--pulse);
-    background: var(--breath);
-}
-
-.existence-portal:hover .portal-text {
-    opacity: 1;
-}
-
-/* 哲学的メッセージ */
-.existence-philosophy {
-    margin-top: var(--presence-space);
-    text-align: center;
-    opacity: 0.6;
-}
-
-.philosophy-text {
-    font-family: 'Noto Serif JP', serif;
+.back-arrow {
     font-size: 1rem;
-    line-height: 1.8;
-    font-style: italic;
-    font-weight: var(--breath-weight);
+    transition: transform var(--moment) ease;
 }
 
-/* セクション2: 創造 (Creation) */
-.creation-section {
-    padding-top: var(--infinite-space);
+.back-to-main:hover .back-arrow {
+    transform: translateX(-3px);
 }
 
-.section-header {
-    text-align: center;
-    margin-bottom: var(--presence-space);
-}
-
-.section-title {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(2rem, 5vw, 4rem);
-    font-weight: var(--breath-weight);
-    margin-bottom: var(--breath-space);
-}
-
-.title-line {
-    width: 60px;
-    height: 1px;
-    background: var(--essence);
-    margin: 0 auto;
-    animation: lineGrow var(--moment) ease;
-}
-
-@keyframes lineGrow {
-    from { width: 0; }
-    to { width: 60px; }
-}
-
-/* 作品グリッド */
-.works-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--presence-space);
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.work-item {
-    background: var(--whisper);
-    border: 1px solid var(--breath);
-    backdrop-filter: blur(10px);
-    padding: var(--presence-space);
-    transition: all var(--moment) ease;
-    cursor: pointer;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: workAppear var(--moment) ease forwards;
-    animation-delay: calc(var(--i, 0) * 0.1s);
-}
-
-@keyframes workAppear {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.work-item:hover {
-    background: var(--breath);
-    border-color: var(--pulse);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 40px var(--whisper);
-}
-
-.work-title {
-    font-size: 1.2rem;
-    font-weight: var(--manifestation-weight);
-    margin-bottom: var(--whisper-space);
-}
-
-.work-description {
-    font-size: 0.9rem;
-    opacity: 0.8;
-    margin-bottom: var(--breath-space);
-    line-height: 1.7;
-}
-
-.work-tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--whisper-space);
-}
-
-.tech-tag {
-    padding: var(--minimal-space) var(--whisper-space);
-    background: var(--breath);
-    border: 1px solid var(--pulse);
-    border-radius: 2px;
-    font-size: 0.8rem;
-    font-weight: var(--breath-weight);
-}
-
-/* 創造の無 */
-.creation-void {
-    text-align: center;
-    margin-top: var(--presence-space);
-    opacity: 0.5;
-}
-
-.void-message {
-    font-size: 1rem;
-    margin-bottom: var(--breath-space);
-    font-style: italic;
-}
-
-.potential-works {
-    display: flex;
-    justify-content: center;
-    gap: var(--breath-space);
-}
-
-.potential-dot {
-    width: 8px;
-    height: 8px;
-    background: var(--breath);
-    border-radius: 50%;
-    animation: potentialPulse var(--breath-cycle) ease-in-out infinite;
-    animation-delay: calc(var(--i, 0) * 1s);
-}
-
-.potential-dot:nth-child(1) { animation-delay: 0s; }
-.potential-dot:nth-child(2) { animation-delay: 1s; }
-.potential-dot:nth-child(3) { animation-delay: 2s; }
-
-@keyframes potentialPulse {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.2); }
-}
-
-/* セクション3: 保存 (Preservation) */
-.preservation-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--presence-space);
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.preservation-item {
-    text-align: center;
-    padding: var(--presence-space);
-    background: var(--whisper);
-    border: 1px solid var(--breath);
-    backdrop-filter: blur(10px);
-    transition: all var(--moment) ease;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: preservationAppear var(--moment) ease forwards;
-    animation-delay: calc(var(--i, 0) * 0.2s);
-}
-
-@keyframes preservationAppear {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.preservation-item:hover {
-    background: var(--breath);
-    border-color: var(--pulse);
-    transform: translateY(-5px);
-}
-
-.preservation-icon {
-    width: 60px;
-    height: 60px;
-    margin: 0 auto var(--breath-space);
-    position: relative;
-}
-
-.icon-morph {
-    width: 100%;
-    height: 100%;
-    border: 2px solid var(--essence);
-    border-radius: 50%;
-    position: relative;
-    animation: iconMorph var(--existence-cycle) ease-in-out infinite;
-}
-
-.icon-morph::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 20px;
-    height: 20px;
-    background: var(--essence);
-    border-radius: 50%;
-    animation: coreFlicker var(--breath-cycle) ease-in-out infinite;
-}
-
-@keyframes iconMorph {
-    0%, 100% { border-radius: 50%; }
-    33% { border-radius: 0%; }
-    66% { border-radius: 30%; }
-}
-
-@keyframes coreFlicker {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
-}
-
-.preservation-item h3 {
-    font-size: 1.1rem;
-    font-weight: var(--manifestation-weight);
-    margin-bottom: var(--breath-space);
-}
-
-.preservation-item p {
-    font-size: 0.9rem;
-    opacity: 0.8;
-    line-height: 1.7;
-}
-
-/* セクション4: 接触 (Contact) */
-.contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--presence-space);
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.contact-method {
-    text-align: center;
-    padding: var(--presence-space);
-    background: var(--whisper);
-    border: 1px solid var(--breath);
-    backdrop-filter: blur(10px);
-    transition: all var(--moment) ease;
-    cursor: pointer;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: contactAppear var(--moment) ease forwards;
-    animation-delay: calc(var(--i, 0) * 0.15s);
-}
-
-@keyframes contactAppear {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.contact-method:hover {
-    background: var(--breath);
-    border-color: var(--pulse);
-    transform: translateY(-3px);
-}
-
-.contact-essence {
-    width: 40px;
-    height: 40px;
-    margin: 0 auto var(--breath-space);
-    position: relative;
-}
-
-.essence-core {
-    width: 100%;
-    height: 100%;
-    border: 1px solid var(--essence);
-    border-radius: 50%;
-    animation: essencePulse var(--breath-cycle) ease-in-out infinite;
-}
-
-@keyframes essencePulse {
-    0%, 100% { 
-        transform: scale(1); 
-        border-color: var(--essence);
-    }
-    50% { 
-        transform: scale(1.1); 
-        border-color: var(--transcendence);
-        box-shadow: 0 0 20px var(--pulse);
-    }
-}
-
-.contact-method h3 {
-    font-size: 1rem;
-    font-weight: var(--manifestation-weight);
-    margin-bottom: var(--whisper-space);
-}
-
-.contact-method p {
-    font-size: 0.9rem;
-    opacity: 0.7;
-    font-family: monospace;
-}
-
-.void-contemplation {
-    text-align: center;
-    font-family: 'Noto Serif JP', serif;
-    font-size: 1rem;
-    font-weight: var(--breath-weight);
-    opacity: 0.6;
-    line-height: 1.8;
-    font-style: italic;
-}
-
-/* 作品モーダル */
-.work-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 10000;
-}
-
-.work-modal.active {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.modal-void {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    backdrop-filter: blur(10px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--presence-space);
-}
-
-.modal-content {
-    background: var(--liminal);
-    border: 1px solid var(--breath);
-    backdrop-filter: blur(20px);
-    max-width: 800px;
-    width: 100%;
-    max-height: 80vh;
-    overflow-y: auto;
-    position: relative;
-    animation: modalAppear var(--moment) ease;
-}
-
-@keyframes modalAppear {
-    from {
-        opacity: 0;
-        transform: scale(0.9) translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
-
-.modal-close {
-    position: absolute;
-    top: var(--breath-space);
-    right: var(--breath-space);
-    background: none;
-    border: 1px solid var(--breath);
-    color: var(--existence);
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all var(--instant) ease;
-    z-index: 1;
-}
-
-.modal-close:hover {
-    background: var(--breath);
-    border-color: var(--pulse);
-}
-
-.modal-body {
-    padding: var(--presence-space);
+.back-text {
+    letter-spacing: 0.05em;
 }
 
 /* 時間の存在 */
@@ -769,18 +155,12 @@ section.active {
     pointer-events: none;
 }
 
-
 .current-time {
     font-family: 'Noto Sans JP', monospace;
     font-size: 1.2rem;
     font-weight: var(--breath-weight);
     margin-bottom: var(--whisper-space);
     opacity: 0.6;
-}
-
-@keyframes timeFlicker {
-    0%, 98% { opacity: 1; }
-    99%, 100% { opacity: 0.5; }
 }
 
 .time-philosophy {
@@ -796,88 +176,23 @@ section.active {
         --presence-space: 16px;
         --infinite-space: 64px;
     }
-    
-    .ethereal-nav {
-        position: fixed;
-        top: var(--presence-space);
-        left: 50%;
-        transform: translateX(-50%);
-        right: auto;
-        z-index: 1000;
+
+    .back-to-main {
+        top: var(--breath-space);
+        left: var(--breath-space);
+        font-size: 0.75rem;
+        padding: 6px 12px;
     }
-    
-    .nav-essence {
-        flex-direction: row;
-        gap: var(--breath-space);
-        justify-content: center;
-    }
-    
-    .nav-dot {
-        width: 50px;
-        height: 50px;
-        margin-bottom: 0;
-    }
-    
-    .nav-label {
-        writing-mode: horizontal-tb;
-        text-orientation: mixed;
-        font-size: 0.6rem;
-    }
-    
-    section {
-        padding: calc(var(--presence-space) * 4) var(--presence-space) var(--presence-space);
-    }
-    
-    .void-text {
-        font-size: clamp(2rem, 10vw, 4rem);
-        flex-direction: row;
-        gap: var(--minimal-space);
-        align-items: center;
-        text-align: center;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-    
-    .works-grid,
-    .preservation-grid,
-    .contact-grid {
-        grid-template-columns: 1fr;
-        gap: var(--breath-space);
-    }
-    
+
     .time-existence {
         bottom: var(--breath-space);
         left: var(--breath-space);
     }
-    
-    .modal-void {
-        padding: var(--breath-space);
-    }
 }
 
 @media (max-width: 480px) {
-    .nav-dot {
-        width: 40px;
-        height: 40px;
-    }
-    
-    .nav-label {
-        font-size: 0.5rem;
-    }
-    
-    .char-morph {
-        font-size: 0.8em;
-    }
-    
-    .pulse-core {
-        width: 60px;
-        height: 60px;
-        font-size: 0.8rem;
-    }
-    
-    .pulse-ring {
-        width: 80px;
-        height: 80px;
+    .back-to-main {
+        font-size: 0.7rem;
     }
 }
 
@@ -894,7 +209,7 @@ section.active {
 
 /* フォーカス状態 */
 button:focus,
-.nav-dot:focus {
+a:focus {
     outline: 2px solid var(--essence);
     outline-offset: 2px;
 }
@@ -909,36 +224,3 @@ button:focus,
     background: var(--pulse);
     color: var(--void);
 }
-
-/* 文字モーフィングアニメーション（控えめで美しい） */
-@keyframes charMorph {
-    0%, 100% { 
-        transform: scale(1);
-        opacity: 0.8;
-    }
-    50% { 
-        transform: scale(1.05);
-        opacity: 1;
-    }
-}
-
-@keyframes breatheText {
-    0%, 100% { 
-        opacity: 0.5;
-        transform: translateY(0);
-    }
-    50% { 
-        opacity: 0.9;
-        transform: translateY(-2px);
-    }
-}
-
-.char-morph {
-    animation: charMorph 6s ease-in-out infinite;
-}
-
-.breathing-text {
-    animation: breatheText 8s ease-in-out infinite;
-}
-
- 
