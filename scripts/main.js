@@ -140,6 +140,12 @@ class Particle {
 }
 
 // ページ読み込み完了時に初期化
-document.addEventListener('DOMContentLoaded', () => {
-    new ExistenceState();
-});
+if (typeof document !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', () => {
+        new ExistenceState();
+    });
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { ExistenceState, ParticleSystem, Particle };
+}
